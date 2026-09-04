@@ -1,2 +1,4 @@
+pyrogram>=2.0.0
+async-lru>=2.0.0
 tgcrypto
-pyrogram==1.2.9
+pysocks
