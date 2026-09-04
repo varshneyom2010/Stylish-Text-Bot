@@ -11,26 +11,19 @@ async def start(c, m):
     owner_username = owner.username if owner.username else 'zautebot'
 
     # start text
-    text = f"""Hey! {m.from_user.mention(style='md')},
+    text = f"""👋🏻Hi {m.from_user.mention(style='md')},
 
-** I am Stylish Font Bot ✍️**
-
-`I can help you to get stylish fonts. Just send me some text and see magic.`
-
-** Developer by :** ❤️ ▷ [@ZauteKm](https://t.me/ZauteKm/346)
-"""
+** I am FONT CHANGER BOT **
+** JUST SEND ME ANY TEXT FOR CHANGE FONT**
 
     # Buttons
     buttons = [
         [
-            InlineKeyboardButton('👥 Group', url=f"https://t.me/iZaute/5"),
-            InlineKeyboardButton('Channel 📢', url=f"https://t.me/iZaute/6")
+            InlineKeyboardButton('ᴊᴏɪɴ ɢʀᴏᴜᴩ', url=f"https://t.me/HD_Sanatan_Movies"),
+            InlineKeyboardButton('ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ', url=f"https://t.me/Sanatan_Movies")
             ],[
-            InlineKeyboardButton('❤️ Credit', url=f"https://t.me/{owner_username}"),
-            InlineKeyboardButton('Bot Lists 🤖', url=f"https://t.me/iZaute/8"),
-            InlineKeyboardButton('GitHup 🤣', url=f"https://github.com/ZauteKm")
-            ],[
-            InlineKeyboardButton('⚜️ Subscribe Now YouTube ⚜️', url=f"https://youtube.com/c/ZauteKm")
+            InlineKeyboardButton('ᴛɢ ᴀɴᴅ ɪɴꜱᴛᴀ ʜᴀᴄᴋ ʙᴏᴛ', url=f"https://t.me/RTG_Premium_Bot"),
+            InlineKeyboardButton('ᴛʀᴀᴅᴇ ʙᴏᴛ', url=f"https://t.me/Colour_Trading_Robot")
         ]
     ]
     await m.reply_text(
