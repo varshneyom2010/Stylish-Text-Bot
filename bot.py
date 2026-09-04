@@ -1,4 +1,18 @@
 import pyrogram
+from flask import Flask
+from threading import Thread
+
+app_web = Flask('')
+
+@app_web.route('/')
+def home():
+    return "Bot is alive!"
+
+def run():
+    app_web.run(host='0.0.0.0', port=10000)
+
+# Yeh background mein server chalayega
+Thread(target=run).start()
 
 import logging
 logging.basicConfig(level=logging.DEBUG,
