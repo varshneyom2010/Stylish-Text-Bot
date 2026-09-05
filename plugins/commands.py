@@ -26,25 +26,24 @@ async def start(c, m):
         ]
     ]
     await m.reply_photo(
-        photo="https://graph.org/file/1751949660c59152c9962-e49c2ed67ef33b6189.jpg", # <--- Yahan apni photo ka link dalein
+        photo="https://graph.org/file/1751949660c59152c9962-e49c2ed67ef33b6189.jpg", 
         caption=text,
         reply_markup=InlineKeyboardMarkup(buttons)
     )
-
 
 
 @Client.on_message(filters.private & filters.incoming & filters.text)
 async def style_buttons(c, m, cb=False):
     buttons = [[
         InlineKeyboardButton('𝚃𝚢𝚙𝚎𝚠𝚛𝚒𝚝𝚎𝚛', callback_data='style+typewriter'),
-        InlineKeyboardButton('𝕆𝕦𝕥𝕝𝕚𝕟𝕖', callback_data='style+outline'),
+        InlineKeyboardButton('Oᨘuᨘtᨘlᨘiᨘnᨘeᨘ', callback_data='style+outline'), # <--- text updated for consistency
         InlineKeyboardButton('𝐒𝐞𝐫𝐢𝐟', callback_data='style+serif'),
         ],[
         InlineKeyboardButton('𝑺𝒆𝒓𝒊𝒇', callback_data='style+bold_cool'),
         InlineKeyboardButton('𝑆𝑒𝑟𝑖𝑓', callback_data='style+cool'),
         InlineKeyboardButton('Sᴍᴀʟʟ Cᴀᴘs', callback_data='style+small_cap'),
         ],[
-        InlineKeyboardButton('𝓈𝒸𝓇𝒾𝓅𝓉', callback_data='style+script'),
+        InlineKeyboardButton('subcript', callback_data='style+script'), # <--- safe name for compatibility
         InlineKeyboardButton('𝓼𝓬𝓻𝓲𝓹𝓽', callback_data='style+script_bolt'),
         InlineKeyboardButton('ᵗⁱⁿʸ', callback_data='style+tiny'),
         ],[
@@ -54,7 +53,7 @@ async def style_buttons(c, m, cb=False):
         ],[
         InlineKeyboardButton('𝘚𝘢𝘯𝘴', callback_data='style+slant'),
         InlineKeyboardButton('𝖲𝖺𝗇𝗌', callback_data='style+sim'),
-         InlineKeyboardButton('Ⓒ︎Ⓘ︎Ⓡ︎Ⓒ︎Ⓛ︎Ⓔ︎Ⓢ︎', callback_data='style+circles'),
+        InlineKeyboardButton('Circles', callback_data='style+circles'),
         ],[
         InlineKeyboardButton('🅒︎🅘︎🅡︎🅒︎🅛︎🅔︎🅢︎', callback_data='style+circle_dark'),
         InlineKeyboardButton('𝔊𝔬𝔱𝔥𝔦𝔠', callback_data='style+gothic'),
@@ -62,7 +61,7 @@ async def style_buttons(c, m, cb=False):
         ],[
         InlineKeyboardButton('C͜͡l͜͡o͜͡u͜͡d͜͡s͜͡', callback_data='style+cloud'),
         InlineKeyboardButton('H̆̈ă̈p̆̈p̆̈y̆̈', callback_data='style+happy'),
-        InlineKeyboardButton('S̑̈ȃ̈d̑̈', callback_data='style+sad'),
+        InlineKeyboardButton('S̑̈ȃ̈d̆̈', callback_data='style+sad'),
         ],[
         InlineKeyboardButton('🇸 🇵 🇪 🇨 🇮 🇦 🇱 ', callback_data='style+special'),
         InlineKeyboardButton('🅂🅀🅄🄰🅁🄴🅂', callback_data='style+squares'),
@@ -73,20 +72,24 @@ async def style_buttons(c, m, cb=False):
         InlineKeyboardButton('S̾t̾i̾n̾k̾y̾', callback_data='style+stinky'),
         ],[
         InlineKeyboardButton('B̥ͦu̥ͦb̥ͦb̥ͦl̥ͦe̥ͦs̥ͦ', callback_data='style+bubbles'),
-        InlineKeyboardButton('U͟n͟d͟e͟r͟l͟i͟n͟e͟', callback_data='style+underline'),
+        InlineKeyboardButton('U͟n͟d͟e͟r͟l͟i͟n͟e', callback_data='style+underline'),
         InlineKeyboardButton('꒒ꍏꀷꌩꌃꀎꁅ', callback_data='style+ladybug'),
         ],[
         InlineKeyboardButton('R҉a҉y҉s҉', callback_data='style+rays'),
         InlineKeyboardButton('B҈i҈r҈d҈s҈', callback_data='style+birds'),
         InlineKeyboardButton('S̸l̸a̸s̸h̸', callback_data='style+slash'),
         ]]
-    # Agar ye callback query hai toh answer karein aur edit karein
+    
     if hasattr(m, "answer"):
         await m.answer()
         await m.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
     else:
-        # Agar ye simple message hai toh reply karein
-        await m.reply_text("Choose a style:", reply_markup=InlineKeyboardMarkup(buttons))
+        # 🌟 ZAROORI BADLAV: User ke message par reply_to_message_id ke sath reply bhejein
+        await m.reply_text(
+            text="**Select Your Style From Below Buttons 👇**", 
+            reply_markup=InlineKeyboardMarkup(buttons),
+            reply_to_message_id=m.id
+        )
 
 @Client.on_callback_query(filters.regex('^style'))
 async def style(c, m):
@@ -95,79 +98,87 @@ async def style(c, m):
 
     if style == 'typewriter':
         cls = Fonts.typewriter
-    if style == 'outline':
+    elif style == 'outline':
         cls = Fonts.outline
-    if style == 'serif':
+    elif style == 'serif':
         cls = Fonts.serief
-    if style == 'bold_cool':
+    elif style == 'bold_cool':
         cls = Fonts.bold_cool
-    if style == 'cool':
+    elif style == 'cool':
         cls = Fonts.cool
-    if style == 'small_cap':
+    elif style == 'small_cap':
         cls = Fonts.smallcap
-    if style == 'script':
+    elif style == 'script':
         cls = Fonts.script
-    if style == 'script_bolt':
+    elif style == 'script_bolt':
         cls = Fonts.bold_script
-    if style == 'tiny':
+    elif style == 'tiny':
         cls = Fonts.tiny
-    if style == 'comic':
+    elif style == 'comic':
         cls = Fonts.comic
-    if style == 'sans':
+    elif style == 'sans':
         cls = Fonts.san
-    if style == 'slant_sans':
+    elif style == 'slant_sans':
         cls = Fonts.slant_san
-    if style == 'slant':
+    elif style == 'slant':
         cls = Fonts.slant
-    if style == 'sim':
+    elif style == 'sim':
         cls = Fonts.sim
-    if style == 'circles':
+    elif style == 'circles':
         cls = Fonts.circles
-    if style == 'circle_dark':
+    elif style == 'circle_dark':
         cls = Fonts.dark_circle
-    if style == 'gothic':
+    elif style == 'gothic':
         cls = Fonts.gothic
-    if style == 'gothic_bolt':
+    elif style == 'gothic_bolt':
         cls = Fonts.bold_gothic
-    if style == 'cloud':
+    elif style == 'cloud':
         cls = Fonts.cloud
-    if style == 'happy':
+    elif style == 'happy':
         cls = Fonts.happy
-    if style == 'sad':
+    elif style == 'sad':
         cls = Fonts.sad
-    if style == 'special':
+    elif style == 'special':
         cls = Fonts.special
-    if style == 'squares':
+    elif style == 'squares':
         cls = Fonts.square
-    if style == 'squares_bold':
+    elif style == 'squares_bold':
         cls = Fonts.dark_square
-    if style == 'andalucia':
+    elif style == 'andalucia':
         cls = Fonts.andalucia
-    if style == 'manga':
+    elif style == 'manga':
         cls = Fonts.manga
-    if style == 'stinky':
+    elif style == 'stinky':
         cls = Fonts.stinky
-    if style == 'bubbles':
+    elif style == 'bubbles':
         cls = Fonts.bubbles
-    if style == 'underline':
+    elif style == 'underline':
         cls = Fonts.underline
-    if style == 'ladybug':
+    elif style == 'ladybug':
         cls = Fonts.ladybug
-    if style == 'rays':
+    elif style == 'rays':
         cls = Fonts.rays
-    if style == 'birds':
+    elif style == 'birds':
         cls = Fonts.birds
-    if style == 'slash':
+    elif style == 'slash':
         cls = Fonts.slash
-        # Safe tarika text nikalne ka
+    else:
+        return
+
+    # 🌟 ZAROORI BADLAV: Sahi se user_text nikalne ka tareeka
     if m.message.reply_to_message and m.message.reply_to_message.text:
         user_text = m.message.reply_to_message.text
     else:
-        await m.message.edit_text("❌ **Error:** Pehle bot ko koi text bhejein, fir font select karein!")
+        await m.message.edit_text("❌ **Error:** Original text nahi mila! Kripya dobara text bhejein.")
         return
 
     new_text = cls(user_text)
+    
+    # Text edit karne ke liye try-except block
     try:
-        await m.message.edit_text(new_text, reply_markup=m.message.reply_markup)
-    except:
-        pass
+        await m.message.edit_text(
+            text=new_text, 
+            reply_markup=m.message.reply_markup
+        )
+    except Exception as e:
+        print(f"Error updating text: {e}")
