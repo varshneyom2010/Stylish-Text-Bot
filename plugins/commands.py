@@ -43,7 +43,7 @@ async def style_buttons(c, m, cb=False):
         InlineKeyboardButton('𝑆𝑒𝑟𝑖𝑓', callback_data='style+cool'),
         InlineKeyboardButton('Sᴍᴀʟʟ Cᴀᴘs', callback_data='style+small_cap'),
         ],[
-        InlineKeyboardButton('subcript', callback_data='style+script'), # <--- safe name for compatibility
+        InlineKeyboardButton('ꪖꪀᦔꪖꪶꪊᥴ𝓲ꪖ', callback_data='style+andalucia')
         InlineKeyboardButton('𝓼𝓬𝓻𝓲𝓹𝓽', callback_data='style+script_bolt'),
         InlineKeyboardButton('ᵗⁱⁿʸ', callback_data='style+tiny'),
         ],[
@@ -65,9 +65,7 @@ async def style_buttons(c, m, cb=False):
         ],[
         InlineKeyboardButton('🇸 🇵 🇪 🇨 🇮 🇦 🇱 ', callback_data='style+special'),
         InlineKeyboardButton('🅂🅀🅄🄰🅁🄴🅂', callback_data='style+squares'),
-        InlineKeyboardButton('🆂︎🆀︎🆄︎🅰︎🆁︎🅴︎🆂︎', callback_data='style+squares_bold'),
-        ],[
-        InlineKeyboardButton('ꪖꪀᦔꪖꪶꪊᥴ𝓲ꪖ', callback_data='style+andalucia')
+        InlineKeyboardButton('🆂︎🆀︎🆄︎🅰︎🆁︎🅴︎🆂︎', callback_data='style+squares_bold')
         ]]
     
     if hasattr(m, "answer"):
