@@ -11,9 +11,8 @@ async def start(c, m):
     owner_username = owner.username if owner.username else 'zautebot'
 
     # start text
-    text = f"""👋🏻Hi {m.from_user.mention(style='md')},
-
-** I am FONT CHANGER BOT **
+    text = f"""👋🏻Hi {m.from_user.mention(style='md')}!
+    
 ** JUST SEND ME ANY TEXT FOR CHANGE FONT**"""
 
     # Buttons
@@ -26,8 +25,9 @@ async def start(c, m):
             InlineKeyboardButton('ᴛʀᴀᴅᴇ ʙᴏᴛ', url=f"https://t.me/Colour_Trading_Robot")
         ]
     ]
-    await m.reply_text(
-        text=text,
+    await m.reply_photo(
+        photo="https://graph.org/file/1751949660c59152c9962-e49c2ed67ef33b6189.jpg", # <--- Yahan apni photo ka link dalein
+        caption=text,
         reply_markup=InlineKeyboardMarkup(buttons)
     )
 
