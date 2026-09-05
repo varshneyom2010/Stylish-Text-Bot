@@ -80,9 +80,13 @@ async def style_buttons(c, m, cb=False):
         InlineKeyboardButton('B҈i҈r҈d҈s҈', callback_data='style+birds'),
         InlineKeyboardButton('S̸l̸a̸s̸h̸', callback_data='style+slash'),
         ]]
-# ✅ Uski jagah ye copy-paste karein (Sahi spaces ke sath):
-    await m.answer()
-    await m.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
+    # Agar ye callback query hai toh answer karein aur edit karein
+    if hasattr(m, "answer"):
+        await m.answer()
+        await m.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
+    else:
+        # Agar ye simple message hai toh reply karein
+        await m.reply_text("Choose a style:", reply_markup=InlineKeyboardMarkup(buttons))
 
 @Client.on_callback_query(filters.regex('^style'))
 async def style(c, m):
