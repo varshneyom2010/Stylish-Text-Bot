@@ -159,7 +159,14 @@ async def style(c, m):
         cls = Fonts.birds
     if style == 'slash':
         cls = Fonts.slash
-    new_text = cls(m.message.reply_to_message.text)
+        # Safe tarika text nikalne ka
+    if m.message.reply_to_message and m.message.reply_to_message.text:
+        user_text = m.message.reply_to_message.text
+    else:
+        await m.message.edit_text("❌ **Error:** Pehle bot ko koi text bhejein, fir font select karein!")
+        return
+
+    new_text = cls(user_text)
     try:
         await m.message.edit_text(new_text, reply_markup=m.message.reply_markup)
     except:
