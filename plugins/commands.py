@@ -67,17 +67,7 @@ async def style_buttons(c, m, cb=False):
         InlineKeyboardButton('🅂🅀🅄🄰🅁🄴🅂', callback_data='style+squares'),
         InlineKeyboardButton('🆂︎🆀︎🆄︎🅰︎🆁︎🅴︎🆂︎', callback_data='style+squares_bold'),
         ],[
-        InlineKeyboardButton('ꪖꪀᦔꪖꪶꪊᥴ𝓲ꪖ', callback_data='style+andalucia'),
-        InlineKeyboardButton('爪卂几ᘜ卂', callback_data='style+manga'),
-        InlineKeyboardButton('S̾t̾i̾n̾k̾y̾', callback_data='style+stinky'),
-        ],[
-        InlineKeyboardButton('B̥ͦu̥ͦb̥ͦb̥ͦl̥ͦe̥ͦs̥ͦ', callback_data='style+bubbles'),
-        InlineKeyboardButton('U͟n͟d͟e͟r͟l͟i͟n͟e', callback_data='style+underline'),
-        InlineKeyboardButton('꒒ꍏꀷꌩꌃꀎꁅ', callback_data='style+ladybug'),
-        ],[
-        InlineKeyboardButton('R҉a҉y҉s҉', callback_data='style+rays'),
-        InlineKeyboardButton('B҈i҈r҈d҈s҈', callback_data='style+birds'),
-        InlineKeyboardButton('S̸l̸a̸s̸h̸', callback_data='style+slash'),
+        InlineKeyboardButton('ꪖꪀᦔꪖꪶꪊᥴ𝓲ꪖ', callback_data='style+andalucia')
         ]]
     
     if hasattr(m, "answer"):
