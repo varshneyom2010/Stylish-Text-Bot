@@ -14,7 +14,7 @@ async def start(c, m):
     text = f"""👋🏻Hi {m.from_user.mention(style='md')},
 
 ** I am FONT CHANGER BOT **
-** JUST SEND ME ANY TEXT FOR CHANGE FONT**
+** JUST SEND ME ANY TEXT FOR CHANGE FONT**"""
 
     # Buttons
     buttons = [
